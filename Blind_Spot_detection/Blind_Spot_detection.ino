@@ -121,6 +121,11 @@ void fadeBlue() {
     analogWrite(RGB_GREEN_PIN, 255);
     analogWrite(RGB_BLUE_PIN, i);
     delay(LED_FADE_DELAY);
+  }for (int i = 0; i < 255; i += LED_FADE_STEP) {
+    analogWrite(RGB_RED_PIN, 255);
+    analogWrite(RGB_GREEN_PIN, 255);
+    analogWrite(RGB_BLUE_PIN, i);
+    delay(LED_FADE_DELAY);
   }
 }
 
