@@ -11,6 +11,8 @@
 //sensor accuracy based values for indicating distances.
 #define trigDist1 30
 #define trigDist2 10
+// buzzer pins
+#define buzzpin 13
 long duration;
 int distance;
 
@@ -24,6 +26,7 @@ void setup() {
   pinMode(r, OUTPUT);
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
+  pinMode(buzzpin, OUTPUT);
 }
 // calculating the distance between the host and object.
 void calDistance() {
@@ -90,12 +93,24 @@ void loop() {
  if(distance<=trigDist1 && distance>trigDist2){  
   fadedOrange(3);  
   fade=true; 
+  digitalWrite(buzzpin, HIGH);
+  delay(500);
+  digitalWrite(buzzpin, LOW);
+  delay(500);
  }
  else if(distance<=trigDist2){  
   fadedRed(3);  
-  fade=true; 
+  fade=true; digitalWrite(buzzpin, HIGH);
+  delay(50);
+  digitalWrite(buzzpin, LOW);
+  delay(50);
+
  } 
  else{  
   fadeInBlue(); 
+  digitalWrite(buzzpin, HIGH);
+  delay(1000);
+  digitalWrite(buzzpin, LOW);
+  delay(1000);
  }
 }
