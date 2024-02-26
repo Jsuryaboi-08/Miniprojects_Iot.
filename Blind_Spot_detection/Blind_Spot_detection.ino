@@ -84,3 +84,18 @@ void fadeInBlue(){
  analogWrite(r, 255); 
  analogWrite(b, 0);
 }
+//checking for distance and calling the pulse functions accordingly.
+void loop() {  
+ calDistance(); 
+ if(distance<=trigDist1 && distance>trigDist2){  
+  fadedOrange(3);  
+  fade=true; 
+ }
+ else if(distance<=trigDist2){  
+  fadedRed(3);  
+  fade=true; 
+ } 
+ else{  
+  fadeInBlue(); 
+ }
+}
