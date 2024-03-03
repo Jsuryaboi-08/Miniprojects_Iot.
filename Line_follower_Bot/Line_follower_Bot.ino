@@ -1,3 +1,4 @@
+//Line_follower_Bot
 #include <Arduino.h>
 
 // Define pins for motor control
@@ -54,7 +55,7 @@ void moveForward() {
 }
 
 void turnLeft() {
-  // Code to turn left
+  // Code  to turn left
   digitalWrite(motorPin1, LOW);
   digitalWrite(motorPin2, HIGH);
   digitalWrite(motorPin3, HIGH);
@@ -76,4 +77,3 @@ void stopMotors() {
   digitalWrite(motorPin3, LOW);
   digitalWrite(motorPin4, LOW);
 }
-//Line_follower_Bot
