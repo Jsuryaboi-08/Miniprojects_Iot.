@@ -2,17 +2,14 @@
 #include <Arduino.h>
 
 // Define pins for motor control
-const int motorPin1 = XX; // Motor 1 control pin 1
-const int motorPin2 = XX; // Motor 1 control pin 2
-const int motorPin3 = XX; // Motor 2 control pin 1
-const int motorPin4 = XX; // Motor 2 control pin 2
+const int motorPin1 = 2; // Motor 1 control pin 1
+const int motorPin2 = 3; // Motor 1 control pin 2
+const int motorPin3 = 14; // Motor 2 control pin 1
+const int motorPin4 = 15; // Motor 2 control pin 2
 
 // Define pins for IR sensors
-const int irSensorPin1 = XX; // IR sensor 1 pin
-const int irSensorPin2 = XX; // IR sensor 2 pin
-
-// Defining threshold for line detection
-const int threshold = 500; 
+const int irSensorPin1 = 13; // IR sensor 1 pin
+const int irSensorPin2 = 12; // IR sensor 2 pin
 
 void setup() {
   // Initialize motor control pins
@@ -27,22 +24,24 @@ void setup() {
 }
 
 void loop() {
-  int ir1Value = analogRead(irSensorPin1);
-  int ir2Value = analogRead(irSensorPin2);
+  byte ir1Value = digitalRead(irSensorPin1);
+  byte ir2Value = digitalRead(irSensorPin2);
 
   // Checking if both sensors detect the line
-  if (ir1Value < threshold && ir2Value < threshold) {
+  if (ir1Value && ir2Value) {
     // Both sensors on the line, move forward
-    moveForward();
-  } else if (ir1Value < threshold) {
+    stopMotors();
+  } else if (ir1Value) {
     // Left sensor detects the line, turn right
-    turnRight();
-  } else if (ir2Value < threshold) {
-    // Right sensor detects the line, turn left
     turnLeft();
+    delay(1);
+  } else if (ir2Value) {
+    // Right sensor detects the line, turn left
+    turnRight();
+    delay(1);
   } else {
     // Both sensors off the line, stop
-    stopMotors();
+    moveForward();
   }
 }
 
@@ -75,5 +74,5 @@ void stopMotors() {
   digitalWrite(motorPin1, LOW);
   digitalWrite(motorPin2, LOW);
   digitalWrite(motorPin3, LOW);
-  digitalWrite(motorPin4, LOW);
+  digitalWrite(motorPin4, LOW);
 }
