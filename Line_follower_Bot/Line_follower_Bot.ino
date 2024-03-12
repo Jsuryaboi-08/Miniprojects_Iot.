@@ -1,3 +1,4 @@
+
 //Line_follower_Bot
 #include <Arduino.h>
 
@@ -21,14 +22,15 @@ void setup() {
   // Initialize IR sensor pins
   pinMode(irSensorPin1, INPUT);
   pinMode(irSensorPin2, INPUT);
-}
 
+  // Configure pin 1 for PWM output
+  pinMode(1, OUTPUT);
+  analogWrite(1, 235);
+}
 void loop() {
   byte ir1Value = digitalRead(irSensorPin1);
   byte ir2Value = digitalRead(irSensorPin2);
-  pinMode(1, OUTPUT);//control through pwm
-  analogWrite(1, 235);
-
+  
 
   // Checking if both sensors detect the line
   if (ir1Value && ir2Value) {
@@ -77,5 +79,5 @@ void stopMotors() {
   digitalWrite(motorPin1, LOW);
   digitalWrite(motorPin2, LOW);
   digitalWrite(motorPin3, LOW);
-  digitalWrite(motorPin4, LOW);
+  digitalWrite(motorPin4,LOW);
 }
