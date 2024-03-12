@@ -26,6 +26,9 @@ void setup() {
 void loop() {
   byte ir1Value = digitalRead(irSensorPin1);
   byte ir2Value = digitalRead(irSensorPin2);
+  pinMode(1, OUTPUT);//control through pwm
+  analogWrite(1, 235);
+
 
   // Checking if both sensors detect the line
   if (ir1Value && ir2Value) {
