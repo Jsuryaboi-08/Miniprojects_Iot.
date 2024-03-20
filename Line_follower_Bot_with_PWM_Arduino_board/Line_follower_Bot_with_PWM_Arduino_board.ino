@@ -48,7 +48,6 @@ void loop() {
     moveForward();
   }
 }
-
 void moveForward() {
   // Code to move forward
   digitalWrite(motorPin1, HIGH);
@@ -56,7 +55,6 @@ void moveForward() {
   digitalWrite(motorPin3, HIGH);
   digitalWrite(motorPin4, LOW);
 }
-
 void turnRight(double speed) {
   // Adjust the right turn speed based on the PID output
   analogWrite(motorPin1, speed * 255);
@@ -64,7 +62,6 @@ void turnRight(double speed) {
   analogWrite(motorPin3, 255);
   analogWrite(motorPin4, 0);
 }
-
 void turnLeft(double speed) {
   // Adjust the left turn speed based on the PID output
   analogWrite(motorPin1, 255);
