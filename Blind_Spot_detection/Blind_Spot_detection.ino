@@ -136,3 +136,33 @@ void buzz() {
   digitalWrite(BUZZER_PIN, LOW);
   delay(BUZZER_OFF_DELAY);
 }
+
+
+//switch case implementation
+
+// void loop(){
+//   int distance = measureDistance();
+//   int range = map(distance,0,30,0,2);
+
+//   switch (range) {
+//     case 0:
+//     fadeOrange()
+//     buzz()
+//     break;
+//     case 1:
+//     fadeRed();   
+//     BUZZER_ON_DELAY = 100; 
+//     BUZZER_OFF_DELAY = 100;
+//     buzz();
+//     break;
+//     case2:
+//     fadeBlue();  
+//     BUZZER_ON_DELAY = 1000;
+//     BUZZER_OFF_DELAY = 1000;
+//     buzz();
+//     break;
+//   }
+//   delay(1);
+// }
+
+
